@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/net.css">
+    <title>My first lab</title>
+</head>
+<body>
+<div class="All_Lab">
+    <header class="main-header">
+        <div class="container">
+            <div class="first-logo-in-header  logo-in-header">
+                <img src="img/6dG-elmtpTA.jpg" alt="I am cool">
+            </div>
+            <div class="manual">
+                <p style="font-style: italic">Шипулин Олег Игоревич, группа P32311, 1ая лаба, вариант 3119</p>
+            </div>
+        </div>
+    </header>
+    <hr>
+    <div class="container">
+        <section class="UI">
+            <div class="img_with_my_var">
+                <img src="img/myVar.png" alt="my variant">
+                <div class="dota">
+
+                </div>
+            </div>
+            <div class="filling_fields">
+                <form action="" method="post">
+                    <p>
+                        Выберите x:
+                        <select name="x-value" id="x-value">
+                            <option>-2</option>
+                            <option>-1.5</option>
+                            <option>-1</option>
+                            <option>-0.5</option>
+                            <option>0</option>
+                            <option>0.5</option>
+                            <option>1</option>
+                            <option>1.5</option>
+                            <option>2</option>
+                        </select>
+                    </p>
+                    <p>
+                        Выберите y из диапозона(-5...5):
+                        <label>
+                            <input type="text" name="y-value" id="y-value" minlength="1" maxlength="15" required pattern="\d{1}[,.]{0,1}\d{0,}">
+                        </label>
+                    </p>
+                    <p>
+                        Выберите значение для R:<br>
+                        <label>
+                            <input type="radio" name="r-value" value="1" checked>
+                            1
+                        </label>
+                        <label>
+                            <input type="radio" name="r-value" value="1.5">
+                            1.5
+                        </label>
+                        <label>
+                            <input type="radio" name="r-value" value="2">
+                            2
+                        </label>
+                        <label>
+                            <input type="radio" name="r-value" value="2.5">
+                            2.5
+                        </label>
+                        <label>
+                            <input type="radio" name="r-value" value="3">
+                            3
+                        </label>
+                    </p>
+                    <input type="submit" value="Проверить" class="button">
+                    <input type="reset" value="Сбросить" class="button">
+                </form>
+            </div>
+        </section>
+        <section class="table-with-fields">
+            <table>
+                <tr>
+                    <th colspan="4">Про Координату</th>
+                    <th colspan="2">PHP-скрипт</th>
+                </tr>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Результат</th>
+                    <th>Выполнение</th>
+                    <th>Время</th>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+    <!--<footer>
+        <div class="copyright">Все права защищены © 2022</div>
+        <div class="footer-social">
+            <a href="#" class="social-btn social-btn-vk">Вконтакте</a>
+            <a href="#" class="social-btn social-btn-fb">Фейсбук</a>
+            <a href="#" class="social-btn social-btn-tw">Твиттер</a>
+        </div>
+    </footer>-->
+</div>
+</body>
+</html>

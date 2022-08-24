@@ -118,8 +118,8 @@ th {
     font-family: "Rage Italic",serif;
 }
 .table-with-fields table th {
-    color: whitesmoke;
-    background-color: black;
+    color: black;
+    background-color: cyan;
 }
 input:invalid {
     border: 2px dashed red;

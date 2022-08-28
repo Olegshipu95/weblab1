@@ -8,12 +8,12 @@ body{
     /*background-size: contain;*/
     /*background-position: center;*/
     cursor:pointer;
-    margin-top: 15%;
+    margin-top: 7%;
     margin-bottom: 15%;
 }
 .All_Lab{
 
-    width: 90%;
+    width: 80%;
     background:white;
     height: 100%;
     margin: 0 5%;
@@ -144,4 +144,10 @@ input:valid {
     color: white;
     .opacity(0.5);
     .rounded(5px);
+}
+.messageFromServer{
+    position: absolute;
+    text-align: center;
+    top: 234px;
+    left:50%;
 }

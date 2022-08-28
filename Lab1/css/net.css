@@ -127,3 +127,7 @@ input:invalid {
 input:valid {
     border: 2px solid black;
 }
+.error_in_validation{
+    font-size: 14px;
+    color: red;
+}

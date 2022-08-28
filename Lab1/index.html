@@ -27,55 +27,58 @@
                 </div>
             </div>
             <div class="filling_fields">
-                <form action="" method="post">
+                <form id="formWithFields" action="php/main.php" method="post">
                     <p>
                         Выберите x:
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(-2);" value="-2">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(-1.5);" value="-1.5">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(-1);" value="-1">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(-0.5);" value="-0.5">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                            t   onclick="setR(0);" value="0">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(1);" value="1">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(1.5);" value="1.5">
-                        <input class="cell-button-class" type="button" name="rChoose"
-                               onclick="setR(2);" value="2">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="-2">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="-1.5">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="-1">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="-0.5">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               t onclick="setX(this, this.value);" value="0">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="1">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="1.5">
+                        <input class="cell-button-class" type="button" name="xChoose"
+                               onclick="setX(this, this.value);" value="2">
                     </p>
+                    <p class="error_in_validation" id="messageX"></p>
                     <p>
                         Выберите y из диапозона(-5...5):
                         <label>
-                            <input type="text" name="y-value" id="y-value" minlength="1" maxlength="15" required pattern="\d{1}[,.]{0,1}\d{0,}">
+                            <input type="text" name="y-value" id="y-value" maxlength="15" placeholder="(-5 to 5)">
                         </label>
                     </p>
+                    <p class="error_in_validation" id="messageY"></p>
                     <p>
                         Выберите значение для R:<br>
                         <label>
-                            <input type="radio" name="r-value" value="1" checked>
+                            <input type="radio" name="r-value" value="1">
                             1
                         </label>
                         <label>
-                            <input type="radio" name="r-value" value="1.5">
+                            <input type="radio" name="r-value" value="1.5" onclick="setR(this.value)">
                             1.5
                         </label>
                         <label>
-                            <input type="radio" name="r-value" value="2">
+                            <input type="radio" name="r-value" value="2" onclick="setR(this.value)">
                             2
                         </label>
                         <label>
-                            <input type="radio" name="r-value" value="2.5">
+                            <input type="radio" name="r-value" value="2.5" onclick="setR(this.value)">
                             2.5
                         </label>
                         <label>
-                            <input type="radio" name="r-value" value="3">
+                            <input type="radio" name="r-value" value="3" onclick="setR(this.value)">
                             3
                         </label>
                     </p>
+                    <p class="error_in_validation" id="messageR"></p>
                     <input type="submit" value="Проверить" class="button">
                     <input type="reset" value="Сбросить" class="button">
                 </form>
@@ -83,21 +86,22 @@
         </section>
         <section class="table-with-fields">
             <table>
+                <thead id="thead">
                 <tr>
-                    <th colspan="4">Про Координату</th>
-                    <th colspan="2">PHP-скрипт</th>
+                    <th colspan="4">XYR</th>
+                    <th colspan="2">PHP-script</th>
                 </tr>
                 <tr>
                     <th>X</th>
                     <th>Y</th>
                     <th>R</th>
-                    <th>Результат</th>
-                    <th>Выполнение</th>
-                    <th>Время</th>
+                    <th>entry</th>
+                    <th>ScriptTime</th>
+                    <th>date</th>
                 </tr>
-                <tr>
-                    <td></td>
-                </tr>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </section>
     </div>
@@ -110,5 +114,7 @@
         </div>
     </footer>-->
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

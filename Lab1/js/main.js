@@ -9,6 +9,9 @@ let messageR = document.getElementById("messageR")
 let servDom = 'http://localhost';
 let formWithFields = document.getElementById("formWithFields")
 let tbody = document.getElementById("tbody");
+let messageFromServer = document.getElementById('messageFromServer')
+
+
 $(document).ready(function () {
     $('[data-submit]').on('click', function (e) {
         e.preventDefault();
@@ -18,18 +21,26 @@ $(document).ready(function () {
                 async: true,
                 type: "POST",
                 data: {
-                    "entry": "yes",
-                    "x": x.value,
+                    "entry":"yes",
+                    "x": x,
                     "y": yElement.value,
-                    "r": r.value
+                    "r": r
                 },
                 cache: false,
                 success: function (response) {
-                    tbody.innerHTML += response
-
+                    let data = JSON.parse(response);
+                    if("message" in data){
+                        alert(data.message);
+                    }
+                    else if("entry" in data){
+                        tbody.innerHTML += '<tr><td>'+x+'</td><td>'+yElement.value+'</td><td>'+r+'</td><td>'+data.entry+'</td><td>'+data.time+'</td></tr>'
+                    }
+                    else{
+                        alert("global error")
+                    }
                 },
                 error: function (jqXHR, exception) {
-                    var msg = '';
+                    let msg = '';
                     if (jqXHR.status === 0) {
                         msg = 'Not connect.\n Verify Network.';
                     } else if (jqXHR.status == 404) {
@@ -47,15 +58,52 @@ $(document).ready(function () {
                     }
                     alert(msg);
                 }
-                // xhr.onload = function() {
-                //     if (xhr.status >= 200 && xhr.status <= 300) { // HTTP ошибка?
-                //         // обработаем ошибку
-                //         alert( 'Ошибка: ' + xhr.status);
-                //     }
-                //     document.getElementById("tbody").innerHTML += xhr.responseText
-                // };
             })
         }
+    })
+})
+$(document).ready(function (){
+    $('[data-clear]').on('click', function (e) {
+        e.preventDefault();
+        if (xButton != null) {
+            xButton.style().borderBottom = ""
+            x = "";
+        }
+        formWithFields.reset();
+        r = ""
+        $.ajax({
+            url: "php/main.php",
+            async: true,
+            type: "POST",
+            data: {
+                "results": "ok",
+            },
+            cache: false,
+            success: function (response) {
+                alert(response)
+            },
+            error: function (jqXHR, exception) {
+                let msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+            }
+        })
+
+
     })
 })
 
@@ -97,7 +145,7 @@ function isYOk() {
     let isOk = true;
     if (yElement.value >= 5 || yElement.value <= -5 || isNaN(yElement.value)) {
         messageY.innerHTML = 'Некорректный ввод, введите число от -5 до 5';
-        isOk = true
+        isOk = false
     } else messageY.innerHTML = ''
     return isOk;
 }

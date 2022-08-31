@@ -20,7 +20,7 @@ function validateAndAnswer()
             $entry = "No";
         }
         $time = strval(number_format(microtime(true) - $time_start, 10, ".", "") * 1000) . 'ms';
-        $result = array($x, $y, $r, $message, $time);
+        $result = array($x, $y, $r, $entry, $time);
         if (!isset($_SESSION['results'])) {
             $_SESSION['results'] = array();
         }

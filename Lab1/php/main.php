@@ -9,9 +9,9 @@ if ($_POST) {
         validateAndAnswer();
     }
     if (isset($_POST["clear"])) {
-        reset();
+        clearTheResults();
     }
     if (isset($_POST["reset"])) {
-        echo "true";
+        resetTheResults();
     }
 }

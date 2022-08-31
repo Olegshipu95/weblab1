@@ -21,7 +21,7 @@ $(document).ready(function () {
                 async: true,
                 type: "POST",
                 data: {
-                    "entry":"yes",
+                    "entry": "yes",
                     "x": x,
                     "y": yElement.value,
                     "r": r
@@ -29,77 +29,45 @@ $(document).ready(function () {
                 cache: false,
                 success: function (response) {
                     let data = JSON.parse(response);
-                    if("message" in data){
+                    if ("message" in data) {
                         alert(data.message);
-                    }
-                    else if("entry" in data){
-                        tbody.innerHTML += '<tr><td>'+x+'</td><td>'+yElement.value+'</td><td>'+r+'</td><td>'+data.entry+'</td><td>'+data.time+'</td></tr>'
-                    }
-                    else{
+                    } else if ("entry" in data) {
+                        tbody.innerHTML += '<tr><td>' + x + '</td><td>' + yElement.value + '</td><td>' + r + '</td><td>' + data.entry + '</td><td>' + data.time + '</td></tr>'
+                    } else {
                         alert("global error")
                     }
                 },
                 error: function (jqXHR, exception) {
-                    let msg = '';
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    } else if (jqXHR.status == 404) {
-                        msg = 'Requested page not found. [404]';
-                    } else if (jqXHR.status == 500) {
-                        msg = 'Internal Server Error [500].';
-                    } else if (exception === 'parsererror') {
-                        msg = 'Requested JSON parse failed.';
-                    } else if (exception === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (exception === 'abort') {
-                        msg = 'Ajax request aborted.';
-                    } else {
-                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                    }
-                    alert(msg);
+                    errorCheck(jqXHR, exception)
                 }
             })
         }
     })
 })
-$(document).ready(function (){
+$(document).ready(function () {
     $('[data-clear]').on('click', function (e) {
         e.preventDefault();
+
         if (xButton != null) {
-            xButton.style().borderBottom = ""
+            xButton.style.borderBottom = ""
             x = "";
         }
         formWithFields.reset();
         r = ""
+        tbody.innerHTML = ""
         $.ajax({
             url: "php/main.php",
             async: true,
             type: "POST",
             data: {
-                "results": "ok",
+                "clear": "ok",
             },
             cache: false,
             success: function (response) {
                 alert(response)
             },
             error: function (jqXHR, exception) {
-                let msg = '';
-                if (jqXHR.status === 0) {
-                    msg = 'Not connect.\n Verify Network.';
-                } else if (jqXHR.status == 404) {
-                    msg = 'Requested page not found. [404]';
-                } else if (jqXHR.status == 500) {
-                    msg = 'Internal Server Error [500].';
-                } else if (exception === 'parsererror') {
-                    msg = 'Requested JSON parse failed.';
-                } else if (exception === 'timeout') {
-                    msg = 'Time out error.';
-                } else if (exception === 'abort') {
-                    msg = 'Ajax request aborted.';
-                } else {
-                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                }
-                alert(msg);
+                errorCheck(jqXHR, exception)
             }
         })
 
@@ -149,3 +117,41 @@ function isYOk() {
     } else messageY.innerHTML = ''
     return isOk;
 }
+
+function errorCheck(jqXHR, exception) {
+    let msg = '';
+    if (jqXHR.status === 0) {
+        msg = 'Not connect.\n Verify Network.';
+    } else if (jqXHR.status == 404) {
+        msg = 'Requested page not found. [404]';
+    } else if (jqXHR.status == 500) {
+        msg = 'Internal Server Error [500].';
+    } else if (exception === 'parsererror') {
+        msg = 'Requested JSON parse failed.';
+    } else if (exception === 'timeout') {
+        msg = 'Time out error.';
+    } else if (exception === 'abort') {
+        msg = 'Ajax request aborted.';
+    } else {
+        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+    }
+    alert(msg);
+}
+
+/*
+$(document).ready(function () {
+    $.ajax({
+        url: "",
+        async: true,
+        type: "POST",
+        data: {
+            "reset": "ok",
+        },
+        success: function (response) {
+            tbody.innerHTML += response
+        },
+        error: function (jqXHR, exception) {
+            errorCheck(jqXHR, exception)
+        }
+    })
+})*/

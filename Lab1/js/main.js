@@ -44,7 +44,8 @@ $(document).ready(function () {
         }
     })
 })
-$(document).ready(function () {
+$(document).ready(data_clear());
+function data_clear() {
     $('[data-clear]').on('click', function (e) {
         e.preventDefault();
 
@@ -73,8 +74,7 @@ $(document).ready(function () {
 
 
     })
-})
-
+}
 
 function setR(value) {
     r = value;
@@ -155,3 +155,4 @@ $(document).ready(function () {
         }
     })
 })*/
+module.exports = {data_clear, isYOk, errorCheck, fieldsAreNotEmpty};

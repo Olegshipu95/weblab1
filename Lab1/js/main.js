@@ -155,4 +155,5 @@ $(document).ready(function () {
         }
     })
 })*/
+
 module.exports = {data_clear, isYOk, errorCheck, fieldsAreNotEmpty};

@@ -10,13 +10,21 @@ function validateAndAnswer()
         $x = returnFloatValue("x");
         $y = returnFloatValue("y");
         $r = returnFloatValue("r");
-        if ((($x >= 0 && $y >= 0 && 4 * ($x * $x + $y * $y) <= $r * $r)) ||
-            ($x >= 0 && $y <= 0 && ($x + $y >= -$r / 2)) ||
-            ($x <= 0 && $y <= 0 && abs($x) <= $r && abs($y) <= $r / 2)) {
-            $message = "In";
+        $thePartOfCoordinatePlane = "";
+
+        if($x >= 0 && $y >= 0 && 4 * ($x * $x + $y * $y) <= $r * $r){
+            $entry="Yes";
+            $thePartOfCoordinatePlane = 1;
+        }
+        else if($x >= 0 && $y <= 0 && ($x + $y >= -$r / 2)){
+            $entry="Yes";
+            $thePartOfCoordinatePlane = 4;
+        }
+        else if($x <= 0 && $y <= 0 && abs($x) <= $r && abs($y) <= $r / 2){
             $entry = "Yes";
-        } else {
-            $message = "Out";
+            $thePartOfCoordinatePlane = 3;
+        }
+        else{
             $entry = "No";
         }
         $time = strval(number_format(microtime(true) - $time_start, 10, ".", "") * 1000) . 'ms';
@@ -28,6 +36,7 @@ function validateAndAnswer()
         $arrayObj = array(
             "entry" => $entry,
             "time" => $time,
+            "thePartOfCoordinatePlane" => $thePartOfCoordinatePlane,
         );
         $arrayJSON = json_encode($arrayObj);
         echo $arrayJSON;

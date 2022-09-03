@@ -68,11 +68,10 @@ hr{
     margin: 0;
 }
 #c1{
-    width: 400px;
-    height: 200px;
+    width: 350px;
+    height: 350px;
     border: 3px solid black;
     position: relative;
-    background: url("../img/myVar.png") no-repeat;
 }
 .dota{
     position: absolute;
@@ -165,4 +164,8 @@ table td:first-child {
 
 table td:last-child {
     border-right: none;
+}
+div.wrapper{
+    height:300px;
+    overflow-y:scroll;
 }

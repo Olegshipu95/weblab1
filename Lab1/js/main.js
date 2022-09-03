@@ -12,6 +12,7 @@ let tbody = document.getElementById("tbody");
 let messageFromServer = document.getElementById('messageFromServer')
 
 
+
 $(document).ready(function () {
     $('[data-submit]').on('click', function (e) {
         e.preventDefault();
@@ -33,6 +34,8 @@ $(document).ready(function () {
                         alert(data.message);
                     } else if ("entry" in data) {
                         tbody.innerHTML += '<tr><td>' + x + '</td><td>' + yElement.value + '</td><td>' + r + '</td><td>' + data.entry + '</td><td>' + data.time + '</td></tr>'
+                        drawCoord(x, yElement.value, r);
+
                     } else {
                         alert("global error")
                     }
@@ -45,6 +48,7 @@ $(document).ready(function () {
     })
 })
 $(document).ready(data_clear());
+
 function data_clear() {
     $('[data-clear]').on('click', function (e) {
         e.preventDefault();
@@ -156,4 +160,3 @@ $(document).ready(function () {
     })
 })*/
 
-module.exports = {data_clear, isYOk, errorCheck, fieldsAreNotEmpty};

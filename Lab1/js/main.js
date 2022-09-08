@@ -142,10 +142,9 @@ function errorCheck(jqXHR, exception) {
     alert(msg);
 }
 
-/*
 $(document).ready(function () {
     $.ajax({
-        url: "",
+        url: "php/main.php",
         async: true,
         type: "POST",
         data: {
@@ -158,5 +157,5 @@ $(document).ready(function () {
             errorCheck(jqXHR, exception)
         }
     })
-})*/
+})
 

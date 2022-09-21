@@ -1,11 +1,7 @@
-const {data_clear, isYOk, errorCheck, fieldsAreNotEmpty} = require('../js/main.js')
-let chai = require("chai");
-let expect = chai.expect;
-let sinon = require("sinon");
-describe("test suit", function (){
-    it("Test the spy calledOnce",function (){
-        let spy = sinon.spy(isYOk());
-        data_clear();
-        expect(spy.calledOnce).to.be.true;
+const fieldsAreNotEmpty = require('../js/main.js')
+describe('validateValues', () => {
+    test('field a is empty', () => {
+        let x = 1, y = 1, r = 1
+        expect(fieldsAreNotEmpty(x, y, r)).toBeTruthy()
     })
 })

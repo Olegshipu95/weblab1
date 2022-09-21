@@ -8,10 +8,13 @@ if ($_POST) {
     if (isset($_POST["entry"])) {
         validateAndAnswer();
     }
-    if (isset($_POST["clear"])) {
+    else if (isset($_POST["clear"])) {
         clearTheResults();
     }
-    if (isset($_POST["reset"])) {
+    else if (isset($_POST["reset"])) {
         resetTheResults();
+    }
+    else {
+        echo "You need write one of this params:reset,clear or entry";
     }
 }

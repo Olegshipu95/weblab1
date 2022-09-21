@@ -16,7 +16,7 @@ let messageFromServer = document.getElementById('messageFromServer')
 $(document).ready(function () {
     $('[data-submit]').on('click', function (e) {
         e.preventDefault();
-        if (isYOk() && fieldsAreNotEmpty()) {
+        if (isYOk() && fieldsAreNotEmpty(x,yElement.value,r)) {
             $.ajax({
                 url: "php/main.php",
                 async: true,
@@ -93,7 +93,7 @@ function setX(object, value) {
     xButton.style.borderBottom = "2px solid black"
 }
 
-function fieldsAreNotEmpty() {
+function fieldsAreNotEmpty(x,y,r) {
     let isNotEmpty = true;
 
     if (!x) {
@@ -101,11 +101,10 @@ function fieldsAreNotEmpty() {
         isNotEmpty = false;
     } else messageX.innerHTML = "";
 
-    if (!yElement.value) {
+    if (!y) {
         messageY.innerHTML = 'Это поле обязательно для заполнения';
         isNotEmpty = false;
     } else messageY.innerHTML = "";
-
     if (!r) {
         messageR.innerHTML = 'Это поле обязательно для заполнения';
         isNotEmpty = false;
@@ -159,3 +158,4 @@ $(document).ready(function () {
     })
 })
 
+module.exports = fieldsAreNotEmpty

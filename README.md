@@ -1,5 +1,2 @@
 ![image](https://user-images.githubusercontent.com/100952665/197603139-f0fb4302-6aa1-499c-a6b1-27aab5954c3d.png)
 ![image](https://user-images.githubusercontent.com/100952665/197603791-c09aa4e9-8304-4291-85ef-373e8d48e304.png)
-![Capture(1)](https://github.com/Olegshipu95/weblab1-php-js/assets/100952665/8b665fdc-8ce8-497d-9b45-31614506bace)
-![Capture(2)](https://github.com/Olegshipu95/weblab1-php-js/assets/100952665/2751adc1-dbd4-4a97-bb95-a9bc371b714c)
-![Capture(3)](https://github.com/Olegshipu95/weblab1-php-js/assets/100952665/03bcf32c-1401-49a8-b381-ab3577b9d85c)
